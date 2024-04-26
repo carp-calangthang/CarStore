@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+<script src="https://kit.fontawesome.com/b8c53641bf.js" crossorigin="anonymous"></script>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"style="color: #10cc3f; margin-top: 10%; border-radius: 24px; text-align: center; font-size: 18px;"{% endif %}>{{ message|safe }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<section class="home" id="home">
+    <h1 class="home_parallax" data-speed="-2">Find you car</h1>
+    <img class="home_parallax" data-speed="-2" src="{% static 'images/imgCar1.png'%}" alt="">
+    
+</section>
+
+<section class="icons_container">
+
+    <div class="icons">
+        <i class="fas fa-home"></i>
+        <div class="content">
+            <h3>10+</h3>
+            <p>Chi nhánh</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-car"></i>
+        <div class="content">
+            <h3>100+</h3>
+            <p>Xe đã bán</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-user"></i>
+        <div class="content">
+            <h3>100+</h3>
+            <p>Khách hài lòng</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-car"></i>
+        <div class="content">
+            <h3>300+</h3>
+            <p>Xe mới</p>
+        </div>
+    </div>
+
+</section>
+
+<!--Car_Model start-->
+
+<section class="carmodel" id="carmodel">
+
+    <h1 class="heading"> Mẫu xe <span>của chúng tôi</span></h1>
+
+    <div class=" swiper carmodel-slider">
+        <div class="swiper-wrapper">
+
+            {% for car in car %}
+    
+            <div class="swiper-slide box">
+                <a href="{% url 'car_detail' car.slug%}" class="product-link">
+                    <img src="{{car.car_images.url}}" alt="">
+                    <div class="content">
+                        <h3>{{car.car_name}}</h3>
+                        <div class="price"><span>price: </span> ₫{{car.car_price}}</div>
+                        <p>
+                            new
+                            <span class="fa-solid fa-circle"></span> {{car.car_year}}
+                        </p>
+                        <a href="{% url 'car_detail' car.slug%}" class="btn">Chi tiết</a>
+                    </div>
+                </a>                
+            </div>
+
+            {% endfor %}
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+</section>
+
+
+<section class="carmodel" id="carmodel">
+
+    <h1 class="heading"> Phụ tùng <span>của chúng tôi</span></h1>
+
+    <div class=" swiper carmodel-slider">
+        <div class="swiper-wrapper">
+
+            {% for accesary in accesary %}
+    
+            <div class="swiper-slide box">
+                <a href="{% url 'accessary_detail' accesary.slug %}" class="product-link">
+                    <img src="{{ accesary.accessary_images.url }}" alt="">
+                    <div class="content">
+                        <h3>{{ accesary.accessary_name }}</h3>
+                        <div class="price"><span>price: </span> ₫{{ accesary.accessary_price }}</div>
+                        <p>
+                            new
+                            <span class="fa-solid fa-circle"></span>
+                        </p>
+                        <a href="{% url 'accessary_detail' accesary.slug %}" class="btn">Chi tiết</a>
+                    </div>
+                </a> 
+            </div>
+
+            {% endfor %}
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+</section>
+
+<!--carPart end-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/home/home.js' %}"></script>
+
+{% endblock %}

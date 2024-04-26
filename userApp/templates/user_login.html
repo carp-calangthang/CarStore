@@ -1,0 +1,41 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/signin/signin.css' %}">
+
+<div class="container">
+    <div class="form-box">
+        <h1 id="title">Sign In</h1>
+        <form action="{% url 'login' %}", method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="message" style="color: #fc0b0b; margin-bottom: 1%; border-radius: 10px;">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Username"  name="username">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="password" placeholder="Password"  name="password">
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn" >Login</button>
+                </div>
+                <div class="register-field">
+                    <span class="register-title">If you don't have an account</span>
+                    <a type="button" href="{% url 'register' %}" id="register-btn" >Register</a>
+                </div>                
+            </div>
+        </form>
+    </div>
+</div>
+ 
+

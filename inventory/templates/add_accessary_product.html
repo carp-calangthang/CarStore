@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load static  %}
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900" rel="stylesheet"><link rel="stylesheet" href="{% static 'css/manage/add_accessary_product.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container" id="app">
+  <div class="add-product">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form--field">
+        <label>Accessary Name *</label>
+        {{ accessary_form.accessary_name }}
+      </div>
+      <div class="form--field">
+        <label>Accessary Company *</label>
+        {{ accessary_form.accessary_company }}
+      </div>
+      <div class="form--field">
+        <label>Price *</label>
+        {{ accessary_form.accessary_price }}
+      </div>
+      <div class="form--field">
+        <label>Description</label>
+        {{ accessary_form.accessary_info }}
+      </div>
+      <label>Image *</label>
+      <label class="image-input">
+        <label class="custom-file-upload">
+          <i class="fas fa-image"></i>
+          {{ accessary_form.accessary_images }}
+        </label>
+        <img id="preview-image" src="#" alt="Ảnh xem trước">
+      </label>
+      <button type="submit" class="submit-button">Add Product</button>
+      <a href="{% url 'product_manager' %}" class="cancel"><span>Cancel</span></a>
+    </form>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+
+<script>
+  function previewImage(input) {
+    var preview = document.getElementById('preview-image');
+    var file = input.files[0];
+    var reader = new FileReader();
+    var addProduct = document.getElementsByClassName('add-product')[0];
+
+    reader.onload = function (e) {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+        addProduct.style.height = '500px';
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
+
+</body>
+</html>

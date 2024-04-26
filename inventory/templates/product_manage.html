@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>CodePen - Product Manager Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/manage/product_mng.css' %}">
+
+</head>
+<body>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,800" rel='stylesheet' type='text/css'>
+    <div class="tools">
+    <div class="search-area">
+        <input type="text" id="search" placeholder="Search" />
+        <button id="searchbutton"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="new-product">
+        <span class="username"><i class="fas fa-user"></i>Ca ne</span>
+        <a href="{% url 'home' %}" class="new-product-btn"><i class="fas fa-home"></i></a>
+        <a href="{% url 'add_car_product' %}" class="new-product-btn"><i class="fas fa-car"></i></a>
+        <a href="{% url 'add_accessary_product' %}" class="new-product-btn"><i class="fas fa-tools"></i></a>
+        <a href="#" class="new-product-btn"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    <div class="settings">
+        <button id="view">Switch View</button>
+    </div>
+    </div>
+
+    <h3 class="car-product-title">Car Product</h3>
+    {% for car_item in car_items %}
+    <table class="product-grid">
+        <tr>
+            <th class="product-img">Img</th>
+            <th class="car">UID</th>
+            <th class="car">Name</th>
+            <th class="car">Company</th>
+            <th class="car">Price</th>
+            <th class="car">Color</th>
+            <th class="car">Year</th>
+            <th class="car">Information</th>
+            <th class="car">Date</th>
+            <th class="car">Actions</th>
+        </tr>
+        <tr>
+            <td class="product-img">
+            <img src="{{car_item.car_images.url}}">
+            </td>
+            <td><span type="text" name="field"/>{{car_item.car_uid}}</td>
+            <td><span type="text" name="field"/>{{car_item.car_name}}</td>
+            <td><span type="text" name="field"/>{{car_item.car_company}}</td>
+            <td><span type="text" name="field"/>{{car_item.car_price}}$</td>
+            <td><span type="text" name="field"/>{{car_item.car_color}}</td>
+            <td><span type="text" name="field"/>{{car_item.car_year}}</td>
+            <td><span type="text" name="field"/>{{car_item.car_information}}</td>
+            <td><span type="text" name="field"/>{{car_item.upload_date}}</td>
+            <td>
+                <button><i class="fas fa-edit"></i></button> 
+                <button><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+
+    <hr>
+
+    <h3 class="car-product-title">Accessary Product</h3>
+
+    {% for accessary_item in accessary_items %}
+    <table class="product-grid">
+        
+        <tr class="accessary-table">
+            <th class="product-img">Img</th>
+            <th>UID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Info</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td class="product-img">
+            <img src="{{accessary_item.accessary_images.url}}">
+            </td>
+            <td><span type="text" name="field"/>{{accessary_item.accessary_uid}}</td>
+            <td><span type="text" name="field"/>{{accessary_item.accessary_name}}</td>
+            <td><span type="text" name="field"/>{{accessary_item.accessary_company}}</td>
+            <td><span type="text" name="field"/>{{accessary_item.accessary_price}}$</td>
+            <td><span type="text" name="field"/>{{accessary_item.accessary_info}}</td>
+            <td><span type="text" name="field"/>{{accessary_item.upload_date}}</td>
+            <td><button><i class="fas fa-edit"></i></button> <button><i class="fas fa-trash"></i></button></td>
+        </tr>
+    </table>
+    {% endfor %}
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script><script  src="{% static 'js/manage/product_mng.js' %}"></script>
+</body>
+</html>

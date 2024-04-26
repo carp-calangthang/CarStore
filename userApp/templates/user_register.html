@@ -1,0 +1,40 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/signup/signup.css' %}">
+
+<div class="container">
+    <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <i class="fa-solid fa-user"></i>
+                    {{form.username}}
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    {{form.email}}
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    {{form.password1}}
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-user"></i>
+                    {{form.password2}}
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn">Register</button>
+                </div>
+                <div class="register-field">
+                    <span class="register-title">If you already have an account</span>
+                    <a type="button" href="{% url 'login' %}" id="register-btn" >Login</a>
+                </div>  
+            </div>
+        </form>
+    </div>
+</div>
+    

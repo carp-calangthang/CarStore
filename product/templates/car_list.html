@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/CarList/CarList.css' %}">
+<script src="https://kit.fontawesome.com/b8c53641bf.js" crossorigin="anonymous"></script>
+
+<!--carPart start-->
+
+<section class="carpart" id="carpart">
+
+    <h1 class="heading"> Danh sách <span>Xe</span> </h1>
+
+    <div class="carpart-content">
+        {% for car in car %}
+        <a href="{% url 'car_detail' car.slug%}">
+            <div class="carpart_box">
+                <img class="carpart-img" src="{{car.car_images.url}}" alt="">
+                <h2 class="product-title"> {{car.car_name}} </h2>
+                <span class="price">${{car.car_price}}</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </a>
+        
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!--carPart end-->
+<script src="{% static 'js/home/home.js' %}"></script>
+
+{% endblock %}

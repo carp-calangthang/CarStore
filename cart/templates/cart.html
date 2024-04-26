@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+
+<h1>Car Cart</h1>
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  {% for product in cart_car_product %}
+  <div class="product">
+    <div class="product-image">
+      <img src="{{product.car_images.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">{{product.car_name}}</div>
+      <p class="product-description">{{product.car_information}}.</p>
+    </div>
+    <div class="product-price">{{product.car_price}}</div>
+    <div class="product-quantity">
+      {{product.car_quantity}}
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">{{product.car_price}}</div>
+  </div>
+  {% endfor %}
+
+  {% for accesary in cart_accesary_product %}
+  <div class="product">
+    <div class="product-image">
+      <img src="{{accesary.accessary_images.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">{{accesary.accessary_name}}</div>
+      <p class="product-description">{{accesary.accessary_info}}.</p>
+    </div>
+    <div class="product-price">{{accesary.accessary_price}}</div>
+    <div class="product-quantity">
+      {{accesary.accessary_quantity}}
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">{{accesary.accessary_price}}</div>
+  </div>
+  {% endfor %}
+      
+  <button class="checkout">Checkout</button>
+
+</div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="{% static 'js/cart/cart.js' %}"></script>
+
+{% endblock %}

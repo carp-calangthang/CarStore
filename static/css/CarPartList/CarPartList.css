@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Condensed&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+:root{
+    --yellow: #f9d806;
+    --black: #130f40;
+    --light-color: #666;
+    --border: 1px solid rgba(0,0,0,.1);
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    font-size: 4.5rem;
+    color: var(--black);
+    margin-bottom: 2%;
+}
+
+.heading span{
+    position: relative;
+    z-index: 0;
+}
+
+.heading span::before{
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: var(--yellow);
+    clip-path: polygon(0 90%, 100% 80%, 100% 100%, 0% 100%);
+}
+
+.carpart {
+    padding: 2rem 9%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.carpart-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    gap: 1.5rem;
+}
+
+.carpart_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.carpart_box:hover {
+    padding: 10px;
+    border: 1px solid var(--black);
+    transition: 0.4s;
+}
+
+.carpart-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.fa-plus {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: gray;
+    color: var(--yellow);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.fa-plus:hover {
+    background: hsl(249, 32%, 17%);
+}
